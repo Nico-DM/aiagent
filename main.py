@@ -23,8 +23,8 @@ def main():
     
     if "--verbose" in sys.argv:
         print("User prompt:", prompt)
-        print("Prompt tokens:", response.usage_metadata.prompt_token_count) # type: ignore
-        print("Response tokens:", response.usage_metadata.candidates_token_count) # type: ignore
+        print("Prompt tokens:", response.usage_metadata.prompt_token_count)
+        print("Response tokens:", response.usage_metadata.candidates_token_count)
     print(response.text)
 
 
