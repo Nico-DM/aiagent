@@ -171,6 +171,12 @@ def main():
 
             else:
                 conversation.append(candidate.content)
+                if response.usage_metadata:
+                    print(f"Prompt tokens: {response.usage_metadata.prompt_token_count}")
+                    print(f"Response tokens: {response.usage_metadata.candidates_token_count}")
+                else:
+                    raise RuntimeError("Failed API call: No usage metadata returned.")
+
                 if response.text:
                     print(f"Final response:\n{response.text}")
                     break
@@ -181,8 +187,6 @@ def main():
 
     except Exception as e:
         print(f'Error: An unexpected error occured: {e}')
-
-
 
 
 if __name__ == "__main__":
